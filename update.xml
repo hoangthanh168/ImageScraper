@@ -3,5 +3,5 @@
   <version>1.0.0.2</version>
   <url>https://khostandee.com/ImageScraper.zip</url>
   <changelog>https://github.com/ravibpatel/AutoUpdater.NET/releases</changelog>
-  <mandatory>false</mandatory>
+  <mandatory>true</mandatory>
 </item>

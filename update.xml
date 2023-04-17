@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <item>
-  <version>1.0.0.3</version>
+  <version>1.0.0.4</version>
   <url>https://khostandee.com/ImageScraper_1003.zip.zip</url>
   <changelog>https://github.com/ravibpatel/AutoUpdater.NET/releases</changelog>
   <mandatory mode="2">true</mandatory>

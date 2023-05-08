@@ -1,0 +1,82 @@
+﻿<mah:MetroWindow x:Class="ImageScraper.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageScraper.Views"
+        mc:Ignorable="d"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:ava="http://icsharpcode.net/sharpdevelop/avalonedit"
+        ShowIconOnTitleBar="True"
+        WindowStartupLocation="CenterScreen"
+        Title="ImageScraper" Height="830" Width="900">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <prism:InvokeCommandAction Command="{Binding WindowClosingCommand}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Loaded">
+            <prism:InvokeCommandAction Command="{Binding WindowLoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <mah:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <Grid Width="{TemplateBinding Width}"
+                 Height="{TemplateBinding Height}"
+                 Margin="5"
+                 RenderOptions.EdgeMode="Aliased"
+                 RenderOptions.BitmapScalingMode="HighQuality">
+                <Image Source="../Assets/search.ico"></Image>
+            </Grid>
+        </DataTemplate>
+    </mah:MetroWindow.IconTemplate>
+    <mah:MetroWindow.Flyouts>
+        <mah:FlyoutsControl>
+            <mah:Flyout MinWidth="300"
+                        Theme="Light"
+                        CloseButtonVisibility="Visible"
+                        Header="Settings"
+                        IsModal="True"
+                        IsOpen="{Binding ElementName=ToggleButtonOpenSettings, Path=IsChecked, Mode=TwoWay}"
+                        Position="Right">
+                <ContentControl Margin="10" prism:RegionManager.RegionName="SettingRegion" />
+            </mah:Flyout>
+        </mah:FlyoutsControl>
+    </mah:MetroWindow.Flyouts>
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <StackPanel Orientation="Horizontal">
+                <Button>
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconUnicons Kind="CloudWifi" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <StatusBarItem Foreground="Azure" Content="{Binding Ping, Mode=OneWay}" ContentStringFormat="{}Ping: {0} ms" />
+            </StackPanel>
+            <ToggleButton Command="{Binding NavigateCommand}" CommandParameter="Setting" x:Name="ToggleButtonOpenSettings" Content="{iconPacks:Modern Kind=Settings}" />
+            <ToggleButton Command="{Binding NavigateCommand}" CommandParameter="ImageEditor" x:Name="ToogleButtonOpenImageEditor" Content="{iconPacks:Unicons Kind=ImageEdit}" />
+            <ToggleButton Command="{Binding NavigateCommand}" CommandParameter="OpenAI" x:Name="ToogleButtonOpenOpenAI" Content="{iconPacks:SimpleIcons Kind=OpenAi}" />
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <mah:ContentControlEx Padding="10" Grid.Column="1" prism:RegionManager.RegionName="ContentRegion" />
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>Goolge.Images.Scraper</StatusBarItem>
+            <Separator Style="{StaticResource MahApps.Styles.Separator.StatusBar}" />
+            <StatusBarItem Content="{Binding Version, Mode=OneWay}" ContentStringFormat="{}Version: v{0}" />
+            <Separator Style="{StaticResource MahApps.Styles.Separator.StatusBar}" />
+            <StatusBarItem Content="Developed by: Hoang Thanh" />
+        </StatusBar>
+    </Grid>
+</mah:MetroWindow>

@@ -1,0 +1,18 @@
+ <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let copyButtons = document.querySelectorAll('.copy-btn');
+            
+            copyButtons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    let blockquote = btn.previousElementSibling;
+                    let tempInput = document.createElement('textarea');
+                    tempInput.value = blockquote.textContent;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempInput);
+                
+                });
+            });
+        });
+    </script>

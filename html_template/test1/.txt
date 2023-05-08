@@ -1,0 +1,40 @@
+
+//tắt tự động thêm thẻ p
+remove_filter('the_content', 'wpautop');
+remove_filter('the_excerpt', 'wpautop');
+
+
+//css
+.quote-container{
+	margin-bottom: 20px;
+}
+.quote-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.quote-text {
+    text-align: left;
+    width: 100%;
+}
+
+blockquote {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.copy-btn {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+
+.copy-btn:hover {
+    background-color: #555;
+}

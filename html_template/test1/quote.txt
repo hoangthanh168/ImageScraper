@@ -1,0 +1,9 @@
+<div class="quote-container">
+    <img class="quote-image aligncenter"
+        src="[image_src]"
+        alt="[quote_content]" />
+    <div class="quote-text">
+        <blockquote>[quote_content]</blockquote>
+        <button class="copy-btn">Copy</button>
+    </div>
+</div>
